@@ -20,7 +20,11 @@ class YoHandler(web.RequestHandler):
         if username == None or link == None:
             return
 
-        uploaded_image = im.upload_image(url=link)
+        try:
+            uploaded_image = im.upload_image(url=link)
+        except Exception:
+            print("not image")
+            return
 
         print(uploaded_image.link)
 
